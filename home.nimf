@@ -1,0 +1,23 @@
+#? stdtmpl | standard
+#proc home(keyword: string, results: seq[string]): string =
+#  result = ""
+<!DOCTYPE HTML>
+<html lang="cn">
+<head>
+<meta charset="UTF-8"><title>Telegram中文搜索</title>
+</head>
+<body>
+    <form action="/search" method="get">
+        <input type="text" name="q" size="100%">
+        <input type="submit" value="🌚">
+    </form>
+    #if keyword != "":
+    <p>搜索关键词 <b>${keyword} </b>：</p>
+    <ul>
+        #for msg in results:
+            <li>$msg</li>
+        #end for
+    </ul>
+    #end if
+</body>
+</html>
