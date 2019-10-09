@@ -11,12 +11,12 @@
    Linux:
    > python3 -m venv tgexport  
    > source tgexport/bin/activate  
-   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg  
+   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg PySocks  
 
    Windows:
    > py -3 -m venv tgexport  
    > tgexport\Scripts\activate.bat  
-   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg  
+   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg PySocks  
    
    配置文件：
    > 下载[config.ini.example](https://github.com/expectocode/telegram-export/raw/master/config.ini.example) ，去掉example后缀后放在想存放数据的文件夹  
