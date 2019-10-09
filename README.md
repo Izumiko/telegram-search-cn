@@ -8,27 +8,43 @@
 
 1. 安装并设置telegram-export （详见该项目的[说明](https://github.com/expectocode/telegram-export/blob/master/README.rst)）
 
-   > sudo pip3 install --upgrade telegram_export cryptg
+   Linux:
+   > python3 -m venv tgexport  
+   > source tgexport/bin/activate  
+   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg  
+
+   Windows:
+   > py -3 -m venv tgexport  
+   > tgexport\Scripts\activate.bat  
+   > pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -U telegram_export cryptg  
+   
+   配置文件：
+   > 下载[config.ini.example](https://github.com/expectocode/telegram-export/raw/master/config.ini.example) ，去掉example后缀后放在想存放数据的文件夹  
    >
-   > 下载[config.ini.example](https://github.com/expectocode/telegram-export/raw/master/config.ini.example) 放在 `~/.config/telegram-export/config.ini` 
-   >
-   > 修改config.ini里面的ApiId ApiHash 以及PhoneNumber，其他根据需要修改
+   > 修改config.ini里面的ApiId, ApiHash, PhoneNumber, OutputDirectory，其他根据需要修改
 
 2. 筛选会话
 
-   > 运行`telegram-export --list-dialogs` 获取会话ID，根据需要填入config.ini的白名单中
+   Linux:
+   > 运行`tgexport/bin/telegram-export --config-file FILE --list-dialogs` 获取会话ID，根据需要填入config.ini的白名单中
+   
+   Widnows:
+   > 运行`python tgexport\Scripts\telegram-export --config-file FILE --list-dialogs` 获取会话ID，根据需要填入config.ini的白名单中
+   
+   上面FILE为config.ini的完整路径
    
 3.  导出数据
 
-   > 运行`telegram-export` 导出数据库
+    > 去掉前一步命令后面的`--list-dialogs`，再次执行来导出数据库
 
 4.  搜索聊天记录
 
-   > 把数据库文件（export.db）与主程序search放在同一目录
-   >
-   > 运行`./search` 
-   >
-   > 打开浏览器，访问`http://127.0.0.1:8090` 进行搜索
+    > 下载[搜索主程序](https://github.com/Izumiko/telegram-search-cn/releases/latest)  
+    > 把数据库文件（export.db）与主程序search放在同一目录
+    >
+    > 运行`./search` 
+    >
+    > 打开浏览器，访问`http://127.0.0.1:8090` 进行搜索
 
 ## 开发
 
