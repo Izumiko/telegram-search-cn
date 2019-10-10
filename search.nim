@@ -1,15 +1,27 @@
-import os, jester, parseopt, db_sqlite, strutils, times
+import os, jester, parseopt, db_sqlite, strutils, times, algorithm
+
+type RawMsg = tuple
+  time: int
+  message: string
 
 var dbfile = "export.db"
 include "home.nimf"
 
+proc timecmp(x,y: RawMsg): int = 
+  if x.time < y.time: 1 else: -1
+
 proc results(keyword: string): seq[string] = 
+  var rawmsg: seq[RawMsg]
   let db = open(dbfile, "", "", "")
   let query = "SELECT Date,Message FROM Message WHERE Message LIKE '%" & keyword & "%'"
   for row in db.fastRows(sql(query)):
-    var time = parseInt(row[0]).fromUnix().format("yyyy-MM-dd HH:mm:ss")
-    result.add(time & "  " & row[1])
+    rawmsg.add((parseInt(row[0]),row[1]))
   db.close()
+  rawmsg.sort(timecmp)
+  for row in rawmsg:
+    var time = row[0].fromUnix().format("yyyy-MM-dd HH:mm:ss")
+    result.add(time & "  " & row[1])
+
 
 router myrouter:
   get "/":
