@@ -28,19 +28,20 @@
    Linux:
    > 运行`tgexport/bin/telegram-export --config-file FILE --list-dialogs` 获取会话ID，根据需要填入config.ini的白名单中
    
-   Widnows:
+   Windows:
    > 运行`python tgexport\Scripts\telegram-export --config-file FILE --list-dialogs` 获取会话ID，根据需要填入config.ini的白名单中
    
    上面FILE为config.ini的完整路径
    
 3.  导出数据
 
-    > 去掉前一步命令后面的`--list-dialogs`，再次执行来导出数据库
+    > 去掉前一步命令后面的`--list-dialogs`，再次执行来导出数据库。（如果聊天记录很多，此过程耗时较长）
+    > 以后更新聊天记录时只需要再次执行命令，脚本就会下载更新的记录，速度比较快。
 
 4.  搜索聊天记录
 
     > 下载[搜索主程序](https://github.com/Izumiko/telegram-search-cn/releases/latest)  
-    > 把数据库文件（export.db）与主程序search放在同一目录
+    > 把主程序search(Windows平台还有sqlite的dll)放在数据库文件（export.db）所在目录
     >
     > 运行`./search` 
     >
